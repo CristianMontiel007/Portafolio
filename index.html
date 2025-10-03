@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cristian — Portafolio</title>
+  <meta name="description" content="Portafolio de Cristian — proyectos en Python, HTML, simulaciones, etc." />
+
+  <!-- Enlaza hoja de estilos -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Icono simple (opcional) -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+</head>
+<body>
+  <!-- Header con nombre, nav y botones -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">Cristian</a>
+
+      <nav id="main-nav" class="nav">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" aria-label="Cambiar tema">🌙</button>
+        <button id="nav-toggle" aria-label="Abrir menú">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero / presentación -->
+  <section class="hero">
+    <div class="container">
+      <h1>Hola, soy Cristian 👋</h1>
+      <p>Estudiante / desarrollador enfocado en simulación, Python y aplicaciones web. Bienvenido a mi portafolio.</p>
+      <p class="hero-cta">
+        <a class="btn" href="#proyectos">Ver proyectos</a>
+        <a class="btn ghost" href="#sobre-mi">Sobre mí</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Sección de proyectos con filtros -->
+  <main class="container main-content">
+    <section id="proyectos" class="projects-section">
+      <h2>Proyectos</h2>
+
+      <!-- Filtros simples -->
+      <div class="project-filters">
+        <button data-filter="all" class="active">Todos</button>
+        <button data-filter="web">Web</button>
+        <button data-filter="python">Python</button>
+        <button data-filter="sim">Simulación</button>
+      </div>
+
+      <!-- Grid de proyectos -->
+      <div id="projects-grid" class="projects-grid">
+        <!-- Cada tarjeta de proyecto tiene data-tech para filtrar -->
+        <article class="project-card" data-tech="python">
+          <h3>Modelo Random Forest</h3>
+          <p>Modelo para metamodelado de simulaciones. <a href="https://github.com/cristianmontiel007">Repo</a></p>
+          <p class="project-meta">Tecnologías: Python, scikit-learn</p>
+          <button class="btn small show-detail">Detalles</button>
+        </article>
+
+        <article class="project-card" data-tech="web">
+          <h3>Portfolio Web (este sitio)</h3>
+          <p>Versión estática con HTML/CSS/JS desplegada en GitHub Pages.</p>
+          <p class="project-meta">Tecnologías: HTML, CSS, JavaScript</p>
+          <button class="btn small show-detail">Detalles</button>
+        </article>
+
+        <article class="project-card" data-tech="sim">
+          <h3>Simulación Rankine</h3>
+          <p>Scripts y análisis termodinámicos para ciclos Rankine regenerativos.</p>
+          <p class="project-meta">Tecnologías: DWSIM, Python</p>
+          <button class="btn small show-detail">Detalles</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sobre mí -->
+    <section id="sobre-mi" class="about-section">
+      <h2>Sobre mí</h2>
+      <p>Soy Cristian, hago simulaciones de procesos, programo en Python y me gusta aprender UI/UX. Estoy construyendo este portafolio para mostrar proyectos reales.</p>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact-section">
+      <h2>Contacto</h2>
+      <p>📧 miemail@example.com</p>
+      <p>🔗 <a href="https://github.com/cristianmontiel007">GitHub</a> • <a href="#">LinkedIn</a></p>
+    </section>
+  </main>
+
+  <!-- Modal simple para detalles del proyecto -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button id="modal-close" class="modal-close" aria-label="Cerrar">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Cristian — Portafolio</p>
+    </div>
+  </footer>
+
+  <!-- Enlaza el script al final para que el DOM ya esté cargado -->
+  <script src="script.js"></script>
+</body>
+</html>
