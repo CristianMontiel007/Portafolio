@@ -1,72 +1,117 @@
-/* ------------------ PALETA Y VARIABLES ------------------ */
-/* Paleta: Moderno (azul). Cambia aquí si quieres otra. */
-:root{
-  --accent: #1266f1;
-  --accent-2: #6db3ff;
-  --bg: #f8fbff;
-  --text: #0f1720;
-  --card: #ffffff;
-  --muted: #576174;
-  --glass: rgba(255,255,255,0.55);
-  --glass-border: rgba(18,102,241,0.08);
-
-  --radius: 12px;
-  --shadow-soft: 0 10px 30px rgba(2,6,23,0.06);
-  --easing: cubic-bezier(.2,.9,.2,1);
-
-  /* tiempos y easings */
-  --anim-fast: 180ms;
-  --anim-medium: 360ms;
-  --anim-slow: 700ms;
+/* ====== ESTILOS GENERALES ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
 }
 
-/* Tema oscuro */
-[data-theme="dark"]{
-  --bg: #0b1220;
-  --text: #e6eef8;
-  --card: #0f1720;
-  --muted: #9aa6b2;
-  --glass: rgba(15,19,32,0.55);
-  --glass-border: rgba(124,193,255,0.08);
+body {
+  background: #f8fff5; /* Verde muy claro */
+  color: #333;
+  line-height: 1.6;
 }
 
-/* Reduce motion para usuarios que lo pidan */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+/* ====== HEADER ====== */
+header {
+  background: linear-gradient(135deg, #a8e063, #56ab2f); /* verde manzana degradado */
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-/* ------------------ RESET / BASE ------------------ */
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.5;
+header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Contenedor central */
-.container{max-width:1000px;margin:0 auto;padding:1rem}
-
-/* ------------------ HEADER ------------------ */
-.site-header{
-  border-bottom:1px solid rgba(0,0,0,0.06);
-  background:linear-gradient(180deg,rgba(0,0,0,0.02),transparent);
-  position:sticky;
-  top:0;
-  z-index:40;
-  backdrop-filter: blur(4px);
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.6rem 0}
-.brand{font-weight:700;text-decoration:none;color:var(--text);font-size:1.05rem}
 
-/* Nav */
-.nav{display:flex;gap:1rem}
-.nav a{text-decoration:none;color:var(--text);font-weight:500;padding:.35rem .45rem;border-radius:8px;transition:background var(--anim-fast)}
-.nav a:hover{background:rgba(0,0,0,0.03)}
+/* ====== SECCIONES ====== */
+section {
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
 
-/* Header actions*
+section h2 {
+  color: #56ab2f;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid #a8e063;
+  padding-left: 10px;
+}
+
+/* ====== PROYECTOS ====== */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.project {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.project img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project h3 {
+  margin: 1rem;
+  font-size: 1.3rem;
+  color: #56ab2f;
+}
+
+.project p {
+  margin: 0 1rem 1rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ====== BOTONES ====== */
+button, .btn {
+  display: inline-block;
+  background: #a8e063;
+  color: #fff;
+  padding: 0.7rem 1.3rem;
+  margin: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+button:hover, .btn:hover {
+  background: #56ab2f;
+}
+
+/* ====== FOOTER ====== */
+footer {
+  background: #56ab2f;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
