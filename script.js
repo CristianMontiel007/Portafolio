@@ -1,78 +1,78 @@
-// DOM helpers
+// Selectores rápidos (helpers)
 const $ = sel => document.querySelector(sel);
 const $$ = sel => Array.from(document.querySelectorAll(sel));
 
-/* --- Theme toggle --- */
+/* --- Tema (claro/oscuro)
+   - Aplica data-theme="dark" en <html> para activar variables CSS del tema oscuro.
+   - Guarda la preferencia en localStorage.
+   - Actualiza el texto y el estado aria-pressed del botón.
+*/
 const themeToggle = $('#theme-toggle');
 const root = document.documentElement;
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) root.setAttribute('data-theme', savedTheme);
+const THEME_KEY = 'theme-preference';
 
-themeToggle.addEventListener('click', () => {
-  const current = root.getAttribute('data-theme');
-  const next = current === 'dark' ? '' : 'dark';
-  root.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
-});
+// Obtener tema preferido (guardado o por sistema)
+function getSavedOrSystemTheme() {
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved === 'dark' || saved === 'light') return saved;
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return prefersDark ? 'dark' : 'light';
+}
 
-/* --- Mobile nav toggle --- */
-const navToggle = $('#nav-toggle');
-const nav = $('#main-nav');
-
-navToggle.addEventListener('click', () => {
-  // Toggle visibility (simple)
-  const isHidden = getComputedStyle(nav).display === 'none';
-  nav.style.display = isHidden ? 'flex' : 'none';
-});
-
-/* --- Project filters --- */
-const filterButtons = $$('.project-filters button');
-const projectCards = $$('.project-card');
-
-function applyFilter(filter) {
-  projectCards.forEach(card => {
-    const tech = card.dataset.tech || '';
-    if (filter === 'all' || tech.includes(filter)) {
-      card.style.display = '';
-    } else {
-      card.style.display = 'none';
+// Aplicar tema: 'dark' o 'light'
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    if (themeToggle) {
+      themeToggle.textContent = '☀️';
+      themeToggle.setAttribute('aria-pressed', 'true');
     }
+  } else {
+    root.removeAttribute('data-theme');
+    if (themeToggle) {
+      themeToggle.textContent = '🌙';
+      themeToggle.setAttribute('aria-pressed', 'false');
+    }
+  }
+  localStorage.setItem(THEME_KEY, theme);
+}
+
+// Inicializar tema al cargar (protección si el botón no existe)
+const initialTheme = getSavedOrSystemTheme();
+applyTheme(initialTheme);
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
   });
 }
 
-// Activate filter button UI
-filterButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterButtons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    applyFilter(btn.dataset.filter);
-  });
-});
+/* --- Navegación móvil
+   - Alterna visibilidad del nav en móviles.
+   - Actualiza aria-expanded en el botón y utiliza estilos (display flex/none) como fallback.
+   - Al cambiar tamaño de ventana, se restaura el estado por defecto para evitar menús pegados.
+*/
+const navToggle = $('#nav-toggle');
+const nav = $('#main-nav');
 
-// default: show all
-applyFilter('all');
+function isNavVisible() {
+  // Si el nav tiene inline style display, respetarlo; si no, usar computed style
+  return nav && (nav.style.display && nav.style.display !== 'none') || (nav && getComputedStyle(nav).display !== 'none');
+}
 
-/* --- Modal details for project --- */
-const modal = $('#modal');
-const modalBody = $('#modal-body');
-const modalClose = $('#modal-close');
+function setNavVisible(visible) {
+  if (!nav || !navToggle) return;
+  nav.style.display = visible ? 'flex' : 'none';
+  navToggle.setAttribute('aria-expanded', visible ? 'true' : 'false');
+}
 
-$$('.show-detail').forEach((btn, i) => {
-  btn.addEventListener('click', (e) => {
-    const card = e.target.closest('.project-card');
-    const title = card.querySelector('h3').textContent;
-    const desc = card.querySelector('p')?.textContent || '';
-    const meta = card.querySelector('.project-meta')?.textContent || '';
-    modalBody.innerHTML = `<h3>${title}</h3><p>${desc}</p><p class="project-meta">${meta}</p><p><a href="https://github.com/cristianmontiel007" target="_blank" rel="noopener">Ver repo</a></p>`;
-    modal.setAttribute('aria-hidden', 'false');
-  });
-});
+if (navToggle && nav) {
+  // Inicial: en pantallas grandes el nav debe mostrarse por CSS; en móviles se oculta automáticamente por CSS
+  // No forzar un estado aquí para respetar CSS, sólo asegurarse de aria-expanded correcto
+  navToggle.setAttribute('aria-expanded', isNavVisible() ? 'true' : 'false');
 
-modalClose.addEventListener('click', () => modal.setAttribute('aria-hidden', 'true'));
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) modal.setAttribute('aria-hidden', 'true');
-});
-
-/* --- Footer year auto --- */
-document.getElementById('year').textContent = new Date().getFullYear();
+  navToggle.addEventListener('click', () => {
+    const visible = isNavVisible();
+    setNavVisible(!visible
