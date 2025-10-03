@@ -1,4 +1,7 @@
-/* ====== ESTILOS GENERALES ====== */
+/* ===========================
+   RESET Y ESTILOS GENERALES
+   - Normaliza márgenes/paddings y define la tipografía base
+   =========================== */
 * {
   margin: 0;
   padding: 0;
@@ -6,112 +9,284 @@
   font-family: "Segoe UI", Tahoma, sans-serif;
 }
 
+/* Color de fondo claro y color de texto legible */
+:root{
+  --bg: #f8fff5;        /* fondo general */
+  --text: #333;         /* color de texto */
+  --accent: #56ab2f;    /* color principal (verde) */
+  --accent-2: #a8e063;  /* variante */
+  --card: #ffffff;      /* fondo de tarjetas */
+  --muted: #555;        /* texto secundario */
+}
+
 body {
-  background: #f8fff5; /* Verde muy claro */
-  color: #333;
+  background: var(--bg);
+  color: var(--text);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ====== HEADER ====== */
-header {
-  background: linear-gradient(135deg, #a8e063, #56ab2f); /* verde manzana degradado */
-  color: white;
-  padding: 2rem 0;
-  text-align: center;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+/* ===========================
+   CONTENEDORES Y UTILIDADES
+   - .container centra el contenido y limita el ancho
+   =========================== */
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
 }
 
-header h1 {
-  font-size: 2.8rem;
-  margin-bottom: 0.5rem;
-}
-
-header p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-/* ====== SECCIONES ====== */
-section {
-  padding: 3rem 2rem;
-  max-width: 1000px;
-  margin: auto;
-}
-
-section h2 {
-  color: #56ab2f;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  border-left: 5px solid #a8e063;
-  padding-left: 10px;
-}
-
-/* ====== PROYECTOS ====== */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.project {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* Enlace oculto para "Saltar al contenido" visible al recibir foco */
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
 }
-
-.project:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-
-.project img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.project h3 {
-  margin: 1rem;
-  font-size: 1.3rem;
-  color: #56ab2f;
-}
-
-.project p {
-  margin: 0 1rem 1rem;
-  font-size: 0.95rem;
-  color: #555;
-}
-
-/* ====== BOTONES ====== */
-button, .btn {
-  display: inline-block;
-  background: #a8e063;
+.skip-link:focus{
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: .5rem .75rem;
+  background: #000;
   color: #fff;
-  padding: 0.7rem 1.3rem;
-  margin: 1rem;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
+  border-radius: 6px;
+  z-index: 9999;
+}
+
+/* ===========================
+   HEADER
+   - Barra superior con marca y acciones
+   =========================== */
+.site-header{
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Layout interno del header: marca / nav / acciones */
+.header-inner{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Marca (puede reemplazarse por imagen) */
+.brand{
+  font-weight: 700;
+  color: white;
   text-decoration: none;
+  font-size: 1.125rem;
+}
+
+/* Navegación principal: enlaces inline */
+.nav{
+  display: flex;
+  gap: 1rem;
+}
+.nav a{
+  color: rgba(255,255,255,0.95);
+  text-decoration: none;
+  padding: .35rem .5rem;
+  border-radius: 6px;
+}
+.nav a:focus, .nav a:hover{
+  background: rgba(255,255,255,0.08);
+}
+
+/* Botones de header (tema y menú) */
+.header-actions{
+  display: flex;
+  gap: .5rem;
+}
+.header-actions button{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+  padding: .4rem .6rem;
+  border-radius: 8px;
+  cursor: pointer;
   font-size: 1rem;
-  transition: background 0.3s;
+}
+.header-actions button:focus{
+  outline: 3px solid rgba(255,255,255,0.12);
 }
 
-button:hover, .btn:hover {
-  background: #56ab2f;
+/* ===========================
+   HERO
+   - Bloque de presentación principal
+   =========================== */
+.hero{
+  padding: 2.25rem 0;
+  position: relative;
+  overflow: visible;
+}
+.hero-inner{
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero h1{
+  font-size: 2rem;
+  margin-bottom: .5rem;
+}
+.hero p{
+  color: var(--muted);
+  font-size: 1.05rem;
 }
 
-/* ====== FOOTER ====== */
-footer {
-  background: #56ab2f;
+/* El SVG decorativo se oculta para quitar la "mancha azul" del centro de la página */
+.hero-blob{
+  display: none !important;
+}
+
+/* ===========================
+   MAIN / SECCIONES
+   - Estilos generales para secciones y títulos
+   =========================== */
+.main-content{
+  padding: 2.5rem 0;
+}
+
+section{
+  padding: 2rem 0;
+}
+
+section h2{
+  color: var(--accent);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--accent-2);
+  padding-left: .75rem;
+}
+
+/* ===========================
+   GRID DE PROYECTOS
+   - Adaptado a la estructura HTML: .projects-grid y .project-card
+   =========================== */
+.projects-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Tarjeta de proyecto: fondo, sombra y separación */
+.project-card{
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  padding: 1rem;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.project-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Títulos y meta dentro de la tarjeta */
+.project-card h3{
+  margin: 0 0 .5rem 0;
+  font-size: 1.125rem;
+  color: var(--accent);
+}
+.project-card p{
+  margin: 0 0 .75rem 0;
+  color: var(--muted);
+  font-size: .95rem;
+}
+.project-meta{
+  font-size: .85rem;
+  color: #777;
+  margin-bottom: .75rem;
+}
+
+/* Botón pequeño de detalles */
+.btn.small, button.small{
+  display: inline-block;
+  background: var(--accent-2);
+  color: #fff;
+  padding: .45rem .7rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: .9rem;
+}
+.btn.small:hover{ background: var(--accent); }
+
+/* ===========================
+   MODAL
+   - Modal básico, centrado y oculto por defecto
+   =========================== */
+.modal{
+  position: fixed;
+  inset: 0;
+  display: none;            /* visible se controla desde JS */
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  z-index: 1200;
+}
+.modal[aria-hidden="false"]{
+  display: flex;
+}
+.modal-content{
+  background: var(--card);
+  width: min(760px, 95%);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  position: relative;
+}
+.modal-close{
+  position: absolute;
+  right: .6rem;
+  top: .6rem;
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* ===========================
+   FOOTER
+   - Pie de página con color principal
+   =========================== */
+.site-footer{
+  background: var(--accent);
   color: white;
   text-align: center;
-  padding: 1.5rem;
-  margin-top: 3rem;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+  padding: 1rem 0;
+  margin-top: 2.5rem;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
+
+/* ===========================
+   RESPONSIVE
+   - Ajustes para pantallas pequeñas
+   =========================== */
+@media (max-width: 800px){
+  .header-inner{ flex-direction: row; }
+  .nav{ display: none; }          /* menú oculto en móvil; se muestra con JS al expandir */
+  .hero h1{ font-size: 1.5rem; }
+  section{ padding: 1.25rem 0; }
+}
+
+/* ===========================
+   ACCESIBILIDAD Y ENLACES
+   - Estados focus visibles y enlaces externos seguros
+   =========================== */
+a:focus, button:focus{
+  outline: 3px solid rgba(86,171,47,0.16);
+  outline-offset: 2px;
+}
+a[target="_blank"]{ text-decoration: underline dotted; }
