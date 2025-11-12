@@ -1,22 +1,23 @@
 :root{
-  /* Paleta principal (claro) — azul profesional */
+  /* Paleta principal (claro)  */
   --bg: #f5f8ff;
-  --surface: #ffffff;
+  --surface: #e5e5e5;
   --text: #172033;
   --muted: #596b7a;
-  --accent: #0078D4;
-  --accent-2: #4da3ff;
+  --accent: #03045e;
+  --accent-2: #003566;
   --shadow: rgba(17,24,39,0.08);
 }
 
-/* Tema oscuro: activar con data-theme="dark" en <html> */
+
+/* Tema oscuro */
 :root[data-theme="dark"], .dark {
   --bg: #0b1220;
-  --surface: #0f1724;
+  --surface: #1d2d44;
   --text: #e6eef6;
   --muted: #9fb0c7;
-  --accent: #3b82f6;
-  --accent-2: #60a5fa;
+  --accent: #ffc300;
+  --accent-2: #003566;
   --shadow: rgba(2,6,23,0.6);
 }
 
@@ -30,6 +31,40 @@ body{
   -moz-osx-font-smoothing:grayscale;
 }
 
+/* Divisor foto    */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.about-text {
+  flex: 1 1 60%;
+  text-align: justify;
+}
+
+.about-photo {
+  flex: 1 1 35%;
+  display: flex;
+  justify-content: center;
+}
+
+.about-photo img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* ENLACES */
+a{
+  color:var(--text);
+  font-weight: bold;
+  text-decoration: none
+}
+
 /* CONTENEDOR */
 .container{max-width:1100px;margin:0 auto;padding:0 1.25rem;}
 
@@ -39,17 +74,17 @@ body{
 
 /* HEADER */
 .site-header{
-  background: linear-gradient(135deg,var(--accent-2),var(--accent));
-  color:white;padding:1rem 0;box-shadow:0 4px 15px rgba(0,0,0,0.08);
+  background: linear-gradient(135deg,var(--accent-2),var(--accent-2));
+  color:var(--text);padding:1rem 0;box-shadow:0 4px 15px rgba(0,0,0,0.08);
   border-bottom-left-radius:20px;border-bottom-right-radius:20px;
 }
 .header-inner{display:flex;gap:1rem;align-items:center;justify-content:space-between;}
-.brand{font-weight:700;color:white;text-decoration:none;font-size:1.125rem;}
+.brand{font-weight:700;color:white ;text-decoration:none;font-size:1.125rem;}
 .nav{display:flex;gap:1rem;}
 .nav a{color:rgba(255,255,255,0.95);text-decoration:none;padding:.35rem .5rem;border-radius:6px;}
 .nav a:focus,.nav a:hover{background:rgba(255,255,255,0.08);}
 .header-actions{display:flex;gap:.5rem;}
-.header-actions button{background:transparent;border:1px solid rgba(255,255,255,0.15);color:white;padding:.4rem .6rem;border-radius:8px;cursor:pointer;font-size:1rem;}
+.header-actions button{background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--text);padding:.4rem .6rem;border-radius:8px;cursor:pointer;font-size:1rem;}
 .header-actions button:focus{outline:3px solid rgba(255,255,255,0.12);}
 
 /* HERO */
@@ -57,7 +92,7 @@ body{
 .hero-inner{max-width:800px;margin:0 auto;text-align:center;}
 .hero h1{font-size:2rem;margin-bottom:.5rem;}
 .hero p{color:var(--muted);font-size:1.05rem;}
-/* quitar SVG decorativo que generaba la "mancha azul" */
+
 .hero-blob{display:none !important;}
 
 /* MAIN / SECCIONES */
@@ -73,6 +108,33 @@ section h2{color:var(--accent);font-size:1.5rem;margin-bottom:1rem;border-left:4
 .project-card p{margin:0 0 .75rem 0;color:var(--muted);font-size:.95rem;}
 .project-meta{font-size:.85rem;color:#777;margin-bottom:.75rem;}
 
+/* BOTONES DE FILTRO */
+.project-filters button {
+  background: var(--surface);        /* color de fondo  */
+  color: var(--accent);              /* color del texto */
+  border: 2px solid var(--accent);   /* marco */
+  border-radius: 999px;              /* redondeado tipo "píldora" */
+  padding: 0.4rem 1rem;
+  margin: 0.3rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s ease;        /* animación suave */
+}
+
+/* Al pasar el mouse */
+.project-filters button:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* Cuando está activo */
+.project-filters button.active {
+  background: var(--accent-2);
+  color: white;
+  border-color: var(--accent-2);
+}
+
+
 /* BOTONES */
 .btn.small,button.small{display:inline-block;background:var(--accent-2);color:#fff;padding:.45rem .7rem;border-radius:999px;border:none;cursor:pointer;font-size:.9rem;}
 .btn.small:hover,.btn:hover{background:var(--accent);}
@@ -84,7 +146,7 @@ section h2{color:var(--accent);font-size:1.5rem;margin-bottom:1rem;border-left:4
 .modal-close{position:absolute;right:.6rem;top:.6rem;background:transparent;border:none;font-size:1.1rem;cursor:pointer;}
 
 /* FOOTER */
-.site-footer{background:var(--accent);color:white;text-align:center;padding:1rem 0;margin-top:2.5rem;border-top-left-radius:12px;border-top-right-radius:12px;}
+.site-footer{background:var(--accent-2);color:white;text-align:center;padding:1rem 0;margin-top:2.5rem;border-top-left-radius:12px;border-top-right-radius:12px;}
 
 /* RESPONSIVE */
 @media (max-width:800px){
@@ -97,3 +159,34 @@ section h2{color:var(--accent);font-size:1.5rem;margin-bottom:1rem;border-left:4
 /* ACCESIBILIDAD */
 a:focus,button:focus{outline:3px solid rgba(43,110,246,0.16);outline-offset:2px;}
 a[target="_blank"]{text-decoration:underline dotted;}
+
+/* Estilos para listas ordenadas */
+ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Estilos para niveles anidados */
+ol ol {
+  list-style-type: lower-alpha; 
+  padding-left: 1.5rem;
+}
+
+
+/* --- sección de Habilidades --- */
+
+.skills-container {
+    display: grid;
+    /* Crea 3 columnas de igual ancho para pantallas grandes */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+    }
+}
+/* ---------------------------------------------------------------------- */
