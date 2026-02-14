@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <!-- Metadatos esenciales -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- Título y descripción para el navegador y buscadores -->
+  <title>My portfolio</title>
+  <meta name="description" content="Portafolio de Cristian — proyectos en Python, HTML, simulaciones, etc." />
+
+  <!-- Enlace a la hoja de estilos -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon -->
+ <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>" />
+  <!-- Color de tema en navegadores móviles -->
+  <meta name="theme-color" content="#0f1720" />
+</head>
+
+<!--BODY-->
+
+<body>
+  <!-- Enlace para saltar directamente al contenido principal -->
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+  <!-- HEADER: marca, navegación principal y botones de acción -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+
+      <!-- Logo -->
+      <a class="brand" href="#" aria-current="page">Cristian</a>
+
+      <!-- NAV PRINCIPAL: enlaces a secciones internas -->
+      <nav id="main-nav" class="nav" role="navigation" aria-label="Navegación principal">
+        <!-- Enlaces internos que apuntan a secciones por id -->
+        <a href="#proyectos">Projects</a>
+        <a href="#sobre-mi">About me</a>
+        <a href="#contacto">Contact me</a>
+      </nav>
+
+      <!-- ACCIONES: botones que se controlan con JavaScript -->
+      <div class="header-actions">
+        <!-- Botón para alternar tema (claro/oscuro); aria-pressed indica estado -->
+        <button id="theme-toggle" aria-label="Cambiar tema" aria-pressed="false">🌙</button>
+        <!-- Botón para alternar visibilidad del menú en pantallas pequeñas -->
+        <button id="nav-toggle" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero" role="region" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <!-- H1 principal para SEO y estructura semántica -->
+      <h1 id="hero-title">Hello, I'm Cristian 👋</h1>
+      <!-- Texto descriptivo breve bajo el título -->
+      <p>Welcome to my portfolio</p>
+    </div>
+
+    <!-- SVG decorativo: marcado aria-hidden para lectores de pantalla -->
+    <svg class="hero-blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false">
+      <path fill="#1266f1" d="M40.9,-67.3C52.4,-59.2,62.1,-49.7,69.8,-38.4C77.5,-27,83.1,-13.5,83.4,0.2C83.8,13.9,78.9,27.7,71.1,40.2C63.4,52.8,52.9,64,39.5,71.1C26.1,78.2,13,81.3,-0.7,82.4C-14.4,83.5,-28.7,82.6,-41,75.4C-53.2,68.1,-63.4,54.5,-70.3,39.3C-77.2,24.2,-80.9,7.4,-78.3,-8.9C-75.7,-25.2,-66.7,-40.9,-54.4,-49.6C-42.2,-58.3,-26.7,-59.9,-12.3,-66.1C2.1,-72.3,16.6,-83.2,30.1,-82.5C43.7,-81.7,57.2,-69.2,69.7,-56.1C82.2,-43.1,93.6,-29.5,99.5,-14.8C105.5,-0.2,105.9,14.8,103.4,29.6C101,44.5,95.6,59.3,84.5,70.1C73.5,80.9,56.7,87.6,40.9,89.6C25.2,91.6,10.5,89.1,-4.3,82.2C-19.1,75.4,-38.3,64.2,-54.4,52.6C-70.5,40.9,-83.5,28,-91.8,13.1C-100.2,-1.8,-103.9,-17.4,-100.6,-32.5C-97.3,-47.6,-86.9,-62.1,-72,-73.7C-57,-85.3,-38.5,-93.9,-20.3,-97.5C-2.1,-101.1,15.8,-99.7,32.9,-94.5C50,-89.3,66.2,-80.3,79.6,-67.3Z" transform="translate(100 100)" />
+    </svg>
+  </div>
+
+  
+  <!-- MAIN-->
+  <main id="main-content" class="container main-content" role="main">
+   <!-- SOBRE MÍ-->
+    <section id="sobre-mi" class="about-section" aria-labelledby="sobre-title">
+      <h2 id="sobre-title">About me</h2>
+
+  <div class="about-container">
+ 
+    <!-- Información a la izquierda -->
+    <div class="about-text">
+      <p> Interdisciplinary engineer, currently pursuing a degree in Computer Systems Engineering. I specialize in data analysis, modeling, and visualization, integrating knowledge from engineering, statistics, and programming to develop data-driven solutions that optimize industrial processes and enhance decision-making.</p>
+      <p>I have experience in building predictive models, designing metamodels, and automating analytical workflows. I am proficient in tools such as Python, R, SQL, Power BI, Tableau, and advanced Excel, as well as process simulators like DWSIM, Aspen Plus, and Aspen HYSYS.</p>
+      <p>My professional goal is to establish myself as a data scientist and process engineer, focused on developing technological solutions and data intelligence strategies that generate real impact in operational efficiency and industrial sustainability.</p>
+    </div>
+  <!--Foto perfil-->
+    <div class="about-photo">
+      <img src="foto.jpg" alt="Foto de perfil de ingeniero" width="210"/>
+    </div>
+
+    </section>
+
+
+    <!-- SECCIÓN PROYECTOS -->
+    <section id="proyectos" class="projects-section" aria-labelledby="proyectos-title">
+      <!-- Título visible de la sección -->
+      <h2 id="proyectos-title">Projects</h2>
+
+      <!-- FILTROS: botones con atributo data-filter que usa JavaScript -->
+      <div class="project-filters" role="toolbar" aria-label="Filtros de proyectos">
+        <!-- Clase "active" indica filtro seleccionado; cambiar con JS -->
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="web">Web</button>
+        <button data-filter="python">Python</button>
+        <button data-filter="sim">Simulation</button>
+      </div>
+
+      <!-- GRID: contenedor de tarjetas; aria-live para anunciar cambios dinámicos -->
+      <div id="projects-grid" class="projects-grid" aria-live="polite">
+       
+        <article class="project-card" data-tech="python" aria-labelledby="p1-title">
+          <!-- Título del proyecto  -->
+          <h3 id="p1-title">Predictive Metamodel</h3>
+          <p>Developed predictive models using Random Forest in Python (Scikit-learn), achieving high accuracy.
+Implemented partial automation of process simulations via IronPython scripting within a process simulator.
+Trained and validated models using approximately 20,000 samples.
+</p>
+          <!-- Línea de meta con tecnologías usadas -->
+          <p class="project-meta">Tecnologías: Python, scikit-learn</p>
+          <!-- Botón para abrir modal con más información; data-id identifica el proyecto -->
+          <button class="btn small show-detail" data-id="p1">Details</button>
+        </article>
+
+        <article class="project-card" data-tech="web" aria-labelledby="p2-title">
+          <h3 id="p2-title">Portfolio Website (this site)</h3>
+          <p>Static version built with HTML/CSS/JS and deployed on GitHub Pages.</p>
+          <p class="project-meta">Technologies: HTML, CSS, JavaScript</p>
+          <button class="btn small show-detail" data-id="p2">Details</button>
+        </article>
+
+        <article class="project-card" data-tech="sim" aria-labelledby="p3-title">
+          <h3 id="p3-title">Rankine Cycle Simulation</h3>
+          <p>Scripts and thermodynamic analysis for regenerative Rankine cycles.</p>
+          <p class="project-meta">Technologies: DWSIM, Python</p>
+          <button class="btn small show-detail" data-id="p3">Details</button>
+        </article>
+
+        <article class="project-card" data-tech="python" aria-labelledby="p3-title">
+          <h3 id="p4-title">Final Project — Google Data Analytics Certificate</h3>
+          <p>Integration and analysis of 5.78 million records from multiple sources.
+Identified 37% of users as potential recurring customers through a weekend membership strategy, improving retention and loyalty.</p>
+          <p class="project-meta">Technologies: R, SQL</p>
+          <button class="btn small show-detail" data-id="p4">Details</button>
+        </article>
+      </div>
+    </section>
+
+    <!--Lista de habilidades técnicas-->
+<section id="skills" class="skills-section" aria-labelledby="skills-title">
+    <h2 id="skills-title">Technical Skills</h2>
+
+    <div class="skills-container">
+
+        <div class="skill-category">
+            <h3>Data Science & ML 🚀</h3>
+            <ul class="skill-list">
+                <li><strong>Python</strong> (Pandas, NumPy, <strong>Scikit-learn</strong>, <strong>TensorFlow</strong>)</li>
+                <li>SQL (Querying and Data Modeling)</li>
+                <li>R, JavaScript</li>
+            </ul>
+        </div>
+
+        <div class="skill-category">
+            <h3>Analysis & BI Tools 📊</h3>
+            <ul class="skill-list">
+                <li><strong>Power BI</strong> and <strong>Tableau</strong> (Dashboard Creation)</li>
+                <li>Advanced Excel (Macros, <strong>VBA</strong>, Power Query)</li>
+                <li>Simulación de Procesos (Process Simulation)</li>
+            </ul>
+        </div>
+
+        <div class="skill-category">
+            <h3>Databases & Development</h3>
+            <ul class="skill-list">
+                <li>Google <strong>BigQuery</strong> and MySQL</li>
+                <li>GitHub and Git (Version Control)</li>
+                <li>HTML and CSS</li>
+                <li>Cybersecurity Fundamentals</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+
+
+    <!-- CONTACTO: información de contacto pública;-->
+    <section id="contacto" class="contact-section" aria-labelledby="contacto-title">
+      <h2 id="contacto-title">Contacto</h2>
+      <p><strong>Email:</strong> Available upon request</p>
+      <p><strong>Links</strong>: <a href="https://github.com/cristianmontiel007" target="_blank" rel="noopener noreferrer">GitHub</a> • <a href="www.linkedin.com/in/cristian-montiel-sandoval" rel="noopener noreferrer">LinkedIn</a></p>
+    </section>
+  </main>
+
+  <!-- MODAL.
+       - aria-hidden controla visibilidad para tecnologías asistivas.
+       - Contenido interno se actualiza dinámicamente desde JavaScript. -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <!-- Botón de cerrar modal-->
+      <button id="modal-close" class="modal-close" aria-label="Cerrar">✕</button>
+      <!-- Contenedor donde se inyecta HTML del proyecto seleccionado -->
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER: año dinámico y aviso de copyright -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <!-- Año actual -->
+      <p>© <span id="year"></span> Cristian — Portfolio</p>
+    </div>
+  </footer>
+  <!-- Script principal: filtros, modal, menú y tema-->
+  <script src="script.js" defer></script>
+</body>
+
+</html>

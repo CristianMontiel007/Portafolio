@@ -1,0 +1,228 @@
+:root{
+  /* Paleta principal (claro)  */
+  --bg: #f5f8ff;
+  --surface: #e5e5e5;
+  --text: #172033;
+  --muted: #596b7a;
+  --accent: #03045e;
+  --accent-2: #003566;
+  --shadow: rgba(17,24,39,0.08);
+}
+
+
+/* Tema oscuro */
+:root[data-theme="dark"], .dark {
+  --bg: #0b1220;
+  --surface: #1d2d44;
+  --text: #e6eef6;
+  --muted: #9fb0c7;
+  --accent: #ffc300;
+  --accent-2: #003566;
+  --shadow: rgba(2,6,23,0.6);
+}
+
+/* RESET Y ESTILOS GENERALES */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Tahoma,sans-serif;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Divisor foto    */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.about-text {
+  flex: 1 1 60%;
+  text-align: justify;
+}
+
+.about-photo {
+  flex: 1 1 35%;
+  display: flex;
+  justify-content: center;
+}
+
+.about-photo img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* ENLACES */
+a{
+  color:var(--text);
+  font-weight: bold;
+  text-decoration: none
+}
+
+/* CONTENEDOR */
+.container{max-width:1100px;margin:0 auto;padding:0 1.25rem;}
+
+/* Enlace "saltar al contenido" visible al foco */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;}
+.skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;padding:.5rem .75rem;background:#000;color:#fff;border-radius:6px;z-index:9999;}
+
+/* HEADER */
+.site-header{
+  background: linear-gradient(135deg,var(--accent-2),var(--accent-2));
+  color:var(--text);padding:1rem 0;box-shadow:0 4px 15px rgba(0,0,0,0.08);
+  border-bottom-left-radius:20px;border-bottom-right-radius:20px;
+}
+.header-inner{display:flex;gap:1rem;align-items:center;justify-content:space-between;}
+.brand{font-weight:700;color:white ;text-decoration:none;font-size:1.125rem;}
+.nav{display:flex;gap:1rem;}
+.nav a{color:rgba(255,255,255,0.95);text-decoration:none;padding:.35rem .5rem;border-radius:6px;}
+.nav a:focus,.nav a:hover{background:rgba(255,255,255,0.08);}
+.header-actions{display:flex;gap:.5rem;}
+.header-actions button{background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--text);padding:.4rem .6rem;border-radius:8px;cursor:pointer;font-size:1rem;}
+.header-actions button:focus{outline:3px solid rgba(255,255,255,0.12);}
+
+/* HERO */
+.hero{padding:2.25rem 0;position:relative;overflow:visible;}
+.hero-inner{max-width:800px;margin:0 auto;text-align:center;}
+.hero h1{font-size:2rem;margin-bottom:.5rem;}
+.hero p{color:var(--muted);font-size:1.05rem;}
+
+.hero-blob{display:none !important;}
+
+/* MAIN / SECCIONES */
+.main-content{padding:2.5rem 0;}
+section{padding:2rem 0;}
+section h2{color:var(--accent);font-size:1.5rem;margin-bottom:1rem;border-left:4px solid var(--accent-2);padding-left:.75rem;}
+
+/* GRID DE PROYECTOS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;}
+.project-card{background:var(--surface);border-radius:12px;box-shadow:0 6px 18px var(--shadow);padding:1rem;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+.project-card h3{margin:0 0 .5rem 0;font-size:1.125rem;color:var(--accent);}
+.project-card p{margin:0 0 .75rem 0;color:var(--muted);font-size:.95rem;}
+.project-meta{font-size:.85rem;color:#777;margin-bottom:.75rem;}
+
+/* BOTONES DE FILTRO */
+.project-filters button {
+  background: var(--surface);        /* color de fondo  */
+  color: var(--accent);              /* color del texto */
+  border: 2px solid var(--accent);   /* marco */
+  border-radius: 999px;              /* redondeado tipo "píldora" */
+  padding: 0.4rem 1rem;
+  margin: 0.3rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s ease;        /* animación suave */
+}
+
+/* Al pasar el mouse */
+.project-filters button:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* Cuando está activo */
+.project-filters button.active {
+  background: var(--accent-2);
+  color: white;
+  border-color: var(--accent-2);
+}
+
+
+/* BOTONES */
+.btn.small,button.small{display:inline-block;background:var(--accent-2);color:#fff;padding:.45rem .7rem;border-radius:999px;border:none;cursor:pointer;font-size:.9rem;}
+.btn.small:hover,.btn:hover{background:var(--accent);}
+
+/* MODAL */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);z-index:1200;}
+.modal[aria-hidden="false"]{display:flex;}
+.modal-content{background:var(--surface);width:min(760px,95%);border-radius:10px;padding:1rem;box-shadow:0 12px 40px rgba(0,0,0,0.12);position:relative;}
+.modal-close{position:absolute;right:.6rem;top:.6rem;background:transparent;border:none;font-size:1.1rem;cursor:pointer;}
+
+/* --- ESTILO MODAL MEJORADO --- */
+/* Estilo visual tipo Canva para subtítulos del modal */
+.modal-inner h4 {
+  display: inline-block;
+  background: #334155;
+  border: 1px solid #374151;     
+  color: white;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.modal-inner p {
+  background: rgba(0,0,0,0.03);
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  line-height: 1.6;
+  margin-top: 0.2rem;
+}
+
+
+.modal {
+  overflow-y: auto;
+}
+
+.modal-content {
+  max-height: 90vh;        
+  overflow-y: auto;        /* permite scroll interno */
+}
+
+
+/* FOOTER */
+.site-footer{background:var(--accent-2);color:white;text-align:center;padding:1rem 0;margin-top:2.5rem;border-top-left-radius:12px;border-top-right-radius:12px;}
+
+/* RESPONSIVE */
+@media (max-width:800px){
+  .header-inner{flex-direction:row;}
+  .nav{display:none;} /* el menú se muestra con JS en móvil */
+  .hero h1{font-size:1.5rem;}
+  section{padding:1.25rem 0;}
+}
+
+
+/* ACCESIBILIDAD */
+a:focus,button:focus{outline:3px solid rgba(43,110,246,0.16);outline-offset:2px;}
+a[target="_blank"]{text-decoration:underline dotted;}
+
+/* Estilos para listas ordenadas */
+ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Estilos para niveles anidados */
+ol ol {
+  list-style-type: lower-alpha; 
+  padding-left: 1.5rem;
+}
+
+
+/* --- sección de Habilidades --- */
+
+.skills-container {
+    display: grid;
+    /* Crea 3 columnas de igual ancho para pantallas grandes */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+    }
+}
+/* ---------------------------------------------------------------------- */
