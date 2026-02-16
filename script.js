@@ -33,9 +33,35 @@ const projectDetails = {
     tools: "Python, pandas, scikit-learn, matplotlib, IronPython, process simulation software"
   },
 
+p2: {
+    title: "Local RAG Intelligence Engine for Large-Scale Documentation",
 
+    objective: "Build a high-precision Retrieval-Augmented Generation (RAG) system to enable secure and verifiable querying of extensive technical documentation (>2,500 pages) in a private, local environment.",
 
-  p4: {
+    methodology: "Developed an end-to-end pipeline using Python and LangChain, integrating pdfplumber for high-fidelity extraction of text and structured tables. A custom chunking strategy was implemented to maintain page-level source attribution, ensuring traceability of every response. Vector embeddings were generated and stored in a FAISS index for efficient similarity search. Local LLM inference was orchestrated via Ollama (Llama 3 / Phi-3), eliminating data privacy risks associated with cloud APIs. Performance was evaluated using a telemetry module built with pandas to track retrieval accuracy and system latency.",
+
+    results: "Successfully enabled real-time querying across 2,500+ pages of unstructured data with 100% source-verifiability. The system correctly identifies specific pages for technical citations, while the performance logs identified key bottlenecks in local hardware inference, providing a baseline for future quantization and SLM optimization.",
+
+    impact: "Created a functional, private prototype that transforms static technical manuals into an interactive knowledge base. Demonstrated the feasibility of deploying large language models on local hardware for secure industrial or research applications, significantly reducing the risk of data leaks and hallucinations.",
+
+    tools: "Python, LangChain, FAISS, Ollama (Llama 3/Phi-3), pandas, Streamlit, pdfplumber"
+},
+
+  p3: {
+    title: "Personal Portfolio Website",
+
+    objective: "Create a responsive, accessible, and high-performance personal portfolio to showcase software development and data analysis projects.",
+
+    methodology: "The website was built from scratch using semantic HTML5 for structure and accessibility. CSS3 with custom properties (variables) was used for styling, enabling a dual light/dark theme switcher. Modern CSS features like Grid and Flexbox were used for layout. All interactions, including the theme toggle, mobile navigation, project filtering, and the details modal, were implemented with vanilla JavaScript, focusing on performance and good practices like event delegation.",
+
+    results: "A fully responsive single-page application that works seamlessly across devices. Implemented dynamic content loading for project details and client-side filtering. Achieved high accessibility standards and a clean, modern user interface.",
+
+    impact: "This project serves as a live demonstration of front-end development skills, including HTML, CSS, and JavaScript proficiency. It acts as a central hub for professional branding and project showcasing.",
+
+    tools: "HTML5, CSS3, Vanilla JavaScript"
+  },
+
+   p4: {
     title: "Bike Sharing Data Analysis (Google Data Analytics Capstone)",
 
     objective: "Understand behavioral differences between casual riders and annual members in order to identify opportunities to increase customer conversion and improve business strategy.",
